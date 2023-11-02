@@ -5,5 +5,5 @@ if [ $# -lt 1 ]; then
 fi
 
 # Call psql_container.sh script with arguments
-./script/psql_container.sh "$@"
+./linux_sql/script/psql_container.sh "$@"
 
