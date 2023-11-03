@@ -20,7 +20,7 @@ hostname=$(hostname -f)
 # Retrieve hardware specification variables
 # xargs is a trick to trim leading and trailing white spaces
 memory_free=$(echo "$vmstat_mb" | awk '{print $4}'| tail -n1 | xargs)
-cpu_idle=$(echo "$vmstat_mb" | awk '{print $15}' | tail -n1 | xargs)
+cpu_idle=$(echo "$vmstat_mb" | awk '{print $16}' | tail -n1 | xargs)
 cpu_kernel=$(echo "$vmstat_mb" | awk '{print $14}' | tail -n1 | xargs)
 disk_io=$(vmstat -d | awk '{print $10}' | tail -n1 | xargs)
 disk_available=$(df -BM / | awk '{print $4}' | sed '2!d' | tr -d '[:alpha:]' | xargs)
@@ -34,11 +34,11 @@ if [ -z "$host_id" ]; then
     exit 1
 fi
 
-# Current time in `2019-11-26 14:40:19` UTC format
-timestamp=$(vmstat -t | awk '{print $18" "$19}' | tail -n1)
+# Current time in PostgreSQL-friendly format 'YYYY-MM-DD HH:MI:SS'
+timestamp=$(date +'%Y-%m-%d %H:%M:%S')
+
 
 # PSQL command: Inserts server usage data into host_usage table
-
 insert_stmt="INSERT INTO host_usage(timestamp, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available) VALUES('$timestamp', (SELECT id FROM host_info WHERE hostname='$hostname'), $memory_free, $cpu_idle, $cpu_kernel, $disk_io, $disk_available);"
 
 # Set up env var for psql cmd
