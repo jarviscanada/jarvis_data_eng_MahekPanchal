@@ -2,41 +2,39 @@
   "education": [
     {
       "awards_achievements": [
-        "Scholarship",
-        "Dean's List (2015, 2016): Ut enim ad minim veniam",
-        "GPA: 3.8/4.0"
+        "GPA: 3.61/4.0"
       ],
-      "degree": "Bachelor of Applied Sciences",
-      "department": "Electrical and Computer Engineering",
-      "duration": "2012-2016",
-      "school_name": "XYZ university"
+      "degree": "Post Graduate Certificate in Web Development",
+      "department": "Computer Engineering",
+      "duration": "2021-2022",
+      "school_name": "Conestoga College"
     },
     {
-      "awards_achievements": null,
-      "degree": "Master of Engineering",
-      "department": "Electrical and Computer Engineering",
-      "duration": "2016-2018",
-      "school_name": "XYZ university"
+      "awards_achievements": [
+        "GPA: 8.72/10.0"
+      ],
+      "degree": "Bachelors in Computer Engineering",
+      "department": "Computer Engineering",
+      "duration": "2017-2021",
+      "school_name": "LJ Institute of Engineering and Technology"
     }
   ],
-  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_demo",
+  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_MahekPanchal",
   "highlighted_projects": [
     {
-      "description": "Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.",
-      "git_url": "https://github.com/jarviscanada/jarvis_profile_builder",
-      "name": "Web app for resturant"
+      "description": "Created a user-friendly web application that enabled influencers to easily access information from the portal and create compelling content for impactful marketing campaigns endorsed by the registered brands.Deployed an Influencer Management System based on the MERN stack, utilizing AWS EC2, S3, and SNS services Executed thorough threat detection and analysis, detecting and analyzing user behavior patterns among registered influencers to ensure robust system security and integrity.",
+      "name": "Influencer Management System"
     },
     {
-      "description": "Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.",
-      "git_url": null,
-      "name": "Machine Learning"
+      "description": "Built a strong Hygiene Surveillance system using Java to check if restaurant staff were wearing gloves and masks during COVID.Used TensorFlow and computer vision to create an accurate hygiene surveillance system and trained AI models using deep learning.",
+      "name": "Hygiene Surveillance"
     }
   ],
   "jarvis_projects": [
     {
-      "description": "Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.",
+      "description": "Developed a Cluster Resource Monitoring Application for Linux CentOS. Created bash scripts capable of retrieving hardware specifications and node resource usage. Real-time data was gathered using the crontab feature and stored in a Postgres database managed within a Docker container.",
       "git_url": "/linux_sql",
-      "name": "Cluster Monitor"
+      "name": "Linux Cluster Resource Monitoring App"
     },
     {
       "description": [
@@ -77,21 +75,21 @@
   "others": [
     {
       "bullets": [
-        "Udacity Machine Learning (2019)"
+        "Rotaract Club of Ahmedabad Midtown"
       ],
-      "title": "Certificates"
+      "title": "Board Of Directors for Women Empowerment"
     },
     {
       "bullets": [
-        "Winner"
+        "Excellence Award in Computer"
       ],
       "title": "Awards"
     },
     {
       "bullets": [
-        "Basketball player",
-        "Competitive gaming",
-        "Volunteer, ABC Food bank: Ut enim ad minim veniam"
+        "Dancing",
+        "Swimming",
+        "Badminton"
       ],
       "title": "Activities/Hobbies"
     }
@@ -99,31 +97,31 @@
   "professional_experience": [
     {
       "company": "Jarvis",
-      "description": "Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis.",
-      "duration": "2020-present",
-      "title": "Software Developer"
+      "description": "Engaged in several projects, boosting my technical expertise. Adopted an agile approach for project sprints. Expanded my skill set by learning new languages and frameworks such as Bash, Spring Boot, and SQL, and diligently maintained updated source code for each project through GitHub.",
+      "duration": "2023-present",
+      "title": "Technical Consultant"
     },
     {
-      "company": "XYZ Company",
-      "description": "Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis.",
-      "duration": "2019",
-      "title": "Tutor"
+      "company": "Softvan",
+      "description": "Collaborated with a team of developers to optimize system performance through efficient software development life cycle management. Implemented software engineering patterns to recognize and resolve issues, leading to reduced debugging durations. Conducted daily scrum meetings to ensure transparent communication and on-time task completion.Worked closely with stakeholders to enhance user experience and system performance.",
+      "duration": "2020-2021",
+      "title": "Software Development Intern"
     }
   ],
   "skills": {
     "competent": [
-      "Donec",
-      "fermentum",
-      "Donec",
-      "fermentum",
-      "Donec"
+      "Docker",
+      "HTML",
+      "Javascript",
+      "CSS",
+      "Google Cloud Platform(GCP)"
     ],
     "familiar": [
-      "Donec",
-      "fermentum",
-      "fermentum",
-      "fermentum",
-      "fermentum"
+      "Tensorflow",
+      "Springboot",
+      "AWS Services",
+      "MERN stack",
+      "C++"
     ],
     "proficient": [
       "Java",
@@ -133,5 +131,5 @@
       "Git"
     ]
   },
-  "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis a orci ac malesuada. Vivamus ligula elit, viverra eu ante porttitor, blandit convallis augue. Aliquam justo justo, mollis at lacus eu, rutrum finibus est. Vestibulum venenatis purus id accumsan pretium. In efficitur magna nec enim laoreet tincidunt. Ut libero metus, scelerisque nec eros vitae, sagittis pellentesque enim. Donec dictum felis volutpat, vehicula magna eu, imperdiet elit. Phasellus ut velit a massa efficitur faucibus. Sed volutpat, lacus sed sagittis luctus, elit."
+  "summary": "I'd describe myself as an inquisitive individual always eager to embrace new knowledge. I completed my bachelor's in Computer Engineering at LJIET and pursued a postgraduate certificate in Web Development at Conestoga College. During my two years in Canada, I've welcomed various part-time roles, refining my interpersonal and communication skills. I'm currently seeking development roles because I find the process of creating new applications incredibly intriguing.In my final year of undergrad, I embarked on an internship at Softvan, where I engaged in hands-on projects, collaborated with diverse teams, and delved into new frameworks like Spring Boot. This experience honed my existing skills while introducing me to algorithms and expanding my proficiency in various tools and technologies"
 }
