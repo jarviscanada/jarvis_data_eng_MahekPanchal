@@ -5,7 +5,7 @@ name: "Mahek Panchal"
 github_repo_root_url: "https://github.com/jarviscanada/jarvis_data_eng_MahekPanchal"
 
 # Introduction:
-summary: "I'd describe myself as an inquisitive individual always eager to embrace new knowledge. I completed my bachelor's in Computer Engineering at LJIET and pursued a postgraduate certificate in Web Development at Conestoga College. During my two years in Canada, I've welcomed various part-time roles, refining my interpersonal and communication skills. I'm currently seeking development roles because I find the process of creating new applications incredibly intriguing.In my final year of undergrad, I embarked on an internship at Softvan, where I engaged in hands-on projects, collaborated with diverse teams, and delved into new frameworks like Spring Boot. This experience honed my existing skills while introducing me to algorithms and expanding my proficiency in various tools and technologies"
+summary: "I'd describe myself as an inquisitive individual always eager to embrace new knowledge.I completed my bachelor's in Computer Engineering at LJIET and pursued a postgraduate certificate in Web Development at Conestoga College. During my two years in Canada, I've welcomed various part-time roles, refining my interpersonal and communication skills.While I have experience in development, I'm eager to take on fresh challenges.In my final year of undergrad, I embarked on an internship at Softvan, where I engaged in hands-on projects, collaborated with diverse teams, and delved into new frameworks like Spring Boot and Tensorflow.This opportunity polished my current skills while broadening my expertise across different tools and tech."
 
 #Highlight your skills:
 skills:
@@ -22,48 +22,49 @@ skills:
     - HTML
     - Javascript
     - CSS
-    - Google Cloud Platform(GCP)
+    - Google Cloud Platform
+    - Postgres
   
   familiar:
     - Tensorflow
     - Springboot
     - AWS Services
-    - MERN stack
+    - Mongodb, Express,React,Nodejs
     - C++ 
 
 # List of Jarvis projects
 jarvis_projects:
   - name: "Linux Cluster Resource Monitoring App"
     git_url: "/linux_sql"
-    description: Developed a Cluster Resource Monitoring Application for Linux CentOS. Created bash scripts capable of retrieving hardware specifications and node resource usage. Real-time data was gathered using the crontab feature and stored in a Postgres database managed within a Docker container.
-  - name: "Core Java Apps"
-    git_url: "/core_java"
-    description:
-      - "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
-      - "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
-      - "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
-  - name: "Springboot App"
-    git_url: "/springboot"
-    description: ""
-  - name: "Python Data Analytics"
-    git_url: "/python_data_anlytics"
-    description: ""
-  - name: "Hadoop"
-    git_url: "/hadoop"
-    description: ""
-  - name: "Spark"
-    git_url: "/spark"
-    description: ""
-  - name: "Cloud/DevOps"
-    git_url: "/cloud_devops"
-    description: ""
+    description: Developed a Cluster Resource Monitoring Application using Linux CentOS. Created bash scripts capable of retrieving hardware specifications and node resource usage. Real-time data was gathered using the crontab feature and stored in a Postgres database deployed within a Docker container.
+  #- name: "Core Java Apps"
+   # git_url: "/core_java"
+    #description:
+     # - "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+     # - "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+     # - "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+ # - name: "Springboot App"
+  #  git_url: "/springboot"
+   # description: ""
+  #- name: "Python Data Analytics"
+   # git_url: "/python_data_anlytics"
+   # description: ""
+  #- name: "Hadoop"
+   # git_url: "/hadoop"
+   # description: ""
+  #- name: "Spark"
+   # git_url: "/spark"
+   # description: ""
+  #- name: "Cloud/DevOps"
+   # git_url: "/cloud_devops"
+    #description: ""
 
 # List of personal or academic projects
 
 highlighted_projects:
   
   - name: "Influencer Management System"
-    description: "Created a user-friendly web application that enabled influencers to easily access information from the portal and create compelling content for impactful marketing campaigns endorsed by the registered brands.Deployed an Influencer Management System based on the MERN stack, utilizing AWS EC2, S3, and SNS services Executed thorough threat detection and analysis, detecting and analyzing user behavior patterns among registered influencers to ensure robust system security and integrity."
+    description: "Created a user-friendly web application that enabled influencers to easily access information from the portal and create compelling content for impactful marketing campaigns endorsed by the registered brands.Deployed an Influencer Management System based on the MERN, utilizing AWS EC2, S3, and SNS services Executed thorough threat detection and analysis, detecting and analyzing user behavior patterns among registered influencers to ensure robust system security and integrity."
   - name: "Hygiene Surveillance"
     description: "Built a strong Hygiene Surveillance system using Java to check if restaurant staff were wearing gloves and masks during COVID.Used TensorFlow and computer vision to create an accurate hygiene surveillance system and trained AI models using deep learning."
 
@@ -71,10 +72,10 @@ highlighted_projects:
 
 professional_experience:
   
-  - title: "Technical Consultant"
+  - title: "Software Engineer"
     company: "Jarvis"
     duration: "2023-present"
-    description: "Engaged in several projects, boosting my technical expertise. Adopted an agile approach for project sprints. Expanded my skill set by learning new languages and frameworks such as Bash, Spring Boot, and SQL, and diligently maintained updated source code for each project through GitHub."
+    description: "Engaged in several projects, boosting my technical expertise. Adopted an agile approach for project sprints. Expanded my skill set by learning new languages and frameworks such as Bash,Docker,and SQL, and diligently maintained updated source code for each project using GitHub."
   - title: "Software Development Intern"
     company: "Softvan"
     duration: "2020-2021"
@@ -98,14 +99,14 @@ education:
 #Optional section
 others:
     
-  - title: "Board Of Directors for Women Empowerment"
+  - title: "Volunteering"
     bullets:
-      - "Rotaract Club of Ahmedabad Midtown"
-  - title: "Awards"
-    bullets:
-      - "Excellence Award in Computer"
+      - "Worked as a BOD for Women Empowerment at Rotaract Club of Ahmedabad Midtown"
+  #- title: "Awards"
+   # bullets:
+    #  - "Excellence Award in Computer"
   - title: "Activities/Hobbies"
     bullets:
-      - "Dancing"
-      - "Swimming"
-      - "Badminton"
+      - "I enjoy dancing and have performed in classical dance shows"
+      - "I like swimming on weekends,it helps me stay fit and composed"
+      - "I competed in badminton at the district level."
