@@ -35,6 +35,11 @@
       "description": "Developed a Cluster Resource Monitoring Application using Linux CentOS. Created bash scripts capable of retrieving hardware specifications and node resource usage. Real-time data was gathered using the crontab feature and stored in a Postgres database deployed within a Docker container.",
       "git_url": "/linux_sql",
       "name": "Linux Cluster Resource Monitoring App"
+    },
+    {
+      "description": "Grep App: Created a Java application that emulates the functionality of the Linux grep command. This application enables users to recursively search for a specified text pattern within a designated directory and save the matched lines to a file.",
+      "git_url": "/core_java",
+      "name": "Core Java Apps"
     }
   ],
   "name": "Mahek Panchal",
@@ -47,7 +52,7 @@
     },
     {
       "bullets": [
-        "I find pleasure in activities such as dancing, swimming, and playing foosball. I have a passion for sports, actively engaging in cricket and badminton. Additionally, I took part in a bike rally with the goal of encouraging people to opt for bikes as a means of transportation, aiming to reduce vehicle pollution."
+        "I enjoy activities such as dancing, swimming, and playing foosball. I have a passion for sports, actively engaging in cricket and badminton. Additionally, I took part in a bike rally with the goal of encouraging people to opt for bikes as a means of transportation, aiming to reduce vehicle pollution."
       ],
       "title": "Activities/Hobbies"
     }
