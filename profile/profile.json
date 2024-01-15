@@ -22,74 +22,32 @@
   "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_MahekPanchal",
   "highlighted_projects": [
     {
-      "description": "Created a user-friendly web application that enabled influencers to easily access information from the portal and create compelling content for impactful marketing campaigns endorsed by the registered brands.Deployed an Influencer Management System based on the MERN stack, utilizing AWS EC2, S3, and SNS services Executed thorough threat detection and analysis, detecting and analyzing user behavior patterns among registered influencers to ensure robust system security and integrity.",
+      "description": "Created a user-friendly web application that enabled influencers to easily access information from the portal and create compelling content for impactful marketing campaigns endorsed by the registered brands. Deployed the system based on the MERN, utilizing AWS EC2, S3, and SNS services. Detected and analyzed user behavior patterns among registered influencers to ensure robust system security and integrity.",
       "name": "Influencer Management System"
     },
     {
-      "description": "Built a strong Hygiene Surveillance system using Java to check if restaurant staff were wearing gloves and masks during COVID.Used TensorFlow and computer vision to create an accurate hygiene surveillance system and trained AI models using deep learning.",
+      "description": "Built a Hygiene Surveillance system in Java to identify whether restaurant staff were adhering to safety protocols by wearing gloves and masks during food preparation amid the COVID-19 pandemic. Employed TensorFlow and Computer Vision for training AI models, and the resulting data was stored in a database.",
       "name": "Hygiene Surveillance"
     }
   ],
   "jarvis_projects": [
     {
-      "description": "Developed a Cluster Resource Monitoring Application for Linux CentOS. Created bash scripts capable of retrieving hardware specifications and node resource usage. Real-time data was gathered using the crontab feature and stored in a Postgres database managed within a Docker container.",
+      "description": "Developed a Cluster Resource Monitoring Application using Linux CentOS. Created bash scripts capable of retrieving hardware specifications and node resource usage. Real-time data was gathered using the crontab feature and stored in a Postgres database deployed within a Docker container.",
       "git_url": "/linux_sql",
       "name": "Linux Cluster Resource Monitoring App"
-    },
-    {
-      "description": [
-        "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.",
-        "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.",
-        "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
-      ],
-      "git_url": "/core_java",
-      "name": "Core Java Apps"
-    },
-    {
-      "description": "",
-      "git_url": "/springboot",
-      "name": "Springboot App"
-    },
-    {
-      "description": "",
-      "git_url": "/python_data_anlytics",
-      "name": "Python Data Analytics"
-    },
-    {
-      "description": "",
-      "git_url": "/hadoop",
-      "name": "Hadoop"
-    },
-    {
-      "description": "",
-      "git_url": "/spark",
-      "name": "Spark"
-    },
-    {
-      "description": "",
-      "git_url": "/cloud_devops",
-      "name": "Cloud/DevOps"
     }
   ],
   "name": "Mahek Panchal",
   "others": [
     {
       "bullets": [
-        "Rotaract Club of Ahmedabad Midtown"
+        "Worked as a BOD for Women Empowerment at Rotaract Club of Ahmedabad Midtown"
       ],
-      "title": "Board Of Directors for Women Empowerment"
+      "title": "Volunteering"
     },
     {
       "bullets": [
-        "Excellence Award in Computer"
-      ],
-      "title": "Awards"
-    },
-    {
-      "bullets": [
-        "Dancing",
-        "Swimming",
-        "Badminton"
+        "I find pleasure in activities such as dancing, swimming, and playing foosball. I have a passion for sports, actively engaging in cricket and badminton. Additionally, I took part in a bike rally with the goal of encouraging people to opt for bikes as a means of transportation, aiming to reduce vehicle pollution."
       ],
       "title": "Activities/Hobbies"
     }
@@ -97,9 +55,9 @@
   "professional_experience": [
     {
       "company": "Jarvis",
-      "description": "Engaged in several projects, boosting my technical expertise. Adopted an agile approach for project sprints. Expanded my skill set by learning new languages and frameworks such as Bash, Spring Boot, and SQL, and diligently maintained updated source code for each project through GitHub.",
+      "description": "Engaged in several projects, boosting my technical expertise. Adopted an agile approach for project sprints. Expanded my skill set by learning new languages and frameworks such as Bash,Docker,and SQL, and diligently maintained updated source code for each project using GitHub.",
       "duration": "2023-present",
-      "title": "Technical Consultant"
+      "title": "Software Engineer"
     },
     {
       "company": "Softvan",
@@ -110,17 +68,18 @@
   ],
   "skills": {
     "competent": [
-      "Docker",
+      "Maven",
       "HTML",
       "Javascript",
       "CSS",
-      "Google Cloud Platform(GCP)"
+      "Google Cloud Platform",
+      "Postgres"
     ],
     "familiar": [
       "Tensorflow",
       "Springboot",
       "AWS Services",
-      "MERN stack",
+      "Mongodb, Express,React,Nodejs",
       "C++"
     ],
     "proficient": [
@@ -128,8 +87,9 @@
       "Linux/Bash",
       "RDBMS/SQL",
       "Agile/Scrum",
-      "Git"
+      "Git",
+      "Docker"
     ]
   },
-  "summary": "I'd describe myself as an inquisitive individual always eager to embrace new knowledge. I completed my bachelor's in Computer Engineering at LJIET and pursued a postgraduate certificate in Web Development at Conestoga College. During my two years in Canada, I've welcomed various part-time roles, refining my interpersonal and communication skills. I'm currently seeking development roles because I find the process of creating new applications incredibly intriguing.In my final year of undergrad, I embarked on an internship at Softvan, where I engaged in hands-on projects, collaborated with diverse teams, and delved into new frameworks like Spring Boot. This experience honed my existing skills while introducing me to algorithms and expanding my proficiency in various tools and technologies"
+  "summary": "I'd describe myself as a curious individual, always eager to embrace new knowledge. My passion for understanding technology and its workings led me to pursue a Bachelor's in Computer Engineering from LJ University in India. Following graduation, I ventured to Canada for my postgraduate studies in Web Development at Conestoga College. Over the past two years in Canada, I've engaged in various part-time roles that have helped me refine my communication and interpersonal skills. During my final year of undergrad studies, I started working as a Software Development intern. I participated in hands-on projects, collaborated with diverse teams, and explored new frameworks like Spring Boot and Tensorflow. Currently, I'm employed as a Software Engineer at Jarvis, where I have the opportunity to develop MVPs, deploy them, and continuously expand my skill set by learning new technologies and tools. Beyond work, I find joy in listening to music while taking walks."
 }
