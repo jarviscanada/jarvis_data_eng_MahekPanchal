@@ -1,20 +1,63 @@
 package ca.jrvs.apps.jdbc;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
 public class Quote {
 
+  @JsonProperty("01. symbol")
   private String ticker; // id
+
+  @JsonProperty("02. open")
   private double open;
+
+  @JsonProperty("03. high")
   private double high;
+
+  @JsonProperty("04. low")
   private double low;
+
+  @JsonProperty("05. price")
   private double price;
+
+  @JsonProperty("06. volume")
   private int volume;
+
+  @JsonProperty("07. latest trading day")
   private Date latestTradingDay;
+
+  @JsonProperty("08. previous close")
   private double previousClose;
+
+  @JsonProperty("09. change")
   private double change;
+
+  @JsonProperty("10. change percent")
   private String changePercent;
-  private Timestamp timestamp; // time when the info was pulled
+
+  @JsonProperty("11. timestamp")
+  private Timestamp timestamp;
+
+  @JsonProperty("companyName")
+  private String companyName;
+
+  public Quote() {
+  }
+
+
+  public Quote(String companyName) {
+    this.companyName = companyName;
+  }
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
 
   public Quote(String ticker, double open, double high, double low, double price, int volume,
       Date latestTradingDay, double previousClose, double change, String changePercent,
