@@ -13,7 +13,7 @@ public class testAPI {
 
   public static void main(String[] args) {
     String apiKey = "11d6aab02dmsh6322f8714c7dc29p1c79b7jsn5cab91b2ec6d";
-    String symbol = "TSLA";
+    String symbol = "MSFT";
 
     HttpClient httpClient = HttpClients.createDefault();
     HttpGet httpGet = new HttpGet("https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&datatype=json");
