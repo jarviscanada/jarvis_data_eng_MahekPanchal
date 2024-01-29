@@ -1,15 +1,15 @@
 package ca.jrvs.apps.jdbc;
+
 public class Position {
-
-  private String ticker; // id
+  private String ticker;
   private int numOfShares;
-  private double valuePaid; // total amount paid for shares
+  private double marketValue;
 
-
-  public Position(String ticker, int numOfShares, double valuePaid) {
+  // Constructor
+  public Position(String ticker, int numOfShares, double marketValue) {
     this.ticker = ticker;
     this.numOfShares = numOfShares;
-    this.valuePaid = valuePaid;
+    this.marketValue = marketValue;
   }
 
   public String getTicker() {
@@ -28,11 +28,15 @@ public class Position {
     this.numOfShares = numOfShares;
   }
 
-  public double getValuePaid() {
-    return valuePaid;
+  public double getMarketValue() {
+    return marketValue;
   }
 
-  public void setValuePaid(double valuePaid) {
-    this.valuePaid = valuePaid;
+  public void setMarketValue(double marketValue) {
+    this.marketValue = marketValue;
+  }
+
+  public double getValuePaid() {
+    return 0;
   }
 }

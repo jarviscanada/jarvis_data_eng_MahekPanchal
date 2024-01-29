@@ -11,11 +11,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class PositionDao implements CrudDao<Position, String> {
   private static final Logger logger = LoggerFactory.getLogger(PositionDao.class);
-  private Connection connection;
+  private final Connection connection;
 
+  //@Autowired
   public PositionDao(Connection connection) {
     this.connection = connection;
   }
@@ -41,7 +45,7 @@ public class PositionDao implements CrudDao<Position, String> {
       statement.setString(1, ticker);
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next()) {
-        return Optional.of(mapToPosition(resultSet));
+        return Optional.of(mapResultSetToPosition(resultSet));
       }
     } catch (SQLException e) {
       logger.error("Error finding position by id. Ticker: {}", ticker, e);
@@ -49,19 +53,33 @@ public class PositionDao implements CrudDao<Position, String> {
     return Optional.empty();
   }
 
-  @Override
-  public Iterable<Position> findAll() {
-    List<Position> positions = new ArrayList<>();
-    String sql = "SELECT * FROM position";
-    try (Statement statement = connection.createStatement()) {
-      ResultSet resultSet = statement.executeQuery(sql);
+
+//  @Override
+//  public Iterable<Position> findAll() {
+//    List<Position> positions = new ArrayList<>();
+//    String sql = "SELECT * FROM position";
+//    try (Statement statement = connection.createStatement()) {
+//      ResultSet resultSet = statement.executeQuery(sql);
+//      while (resultSet.next()) {
+//        positions.add(mapToPosition(resultSet));
+//      }
+//    } catch (SQLException e) {
+//      logger.error("Error finding all positions", e);
+//    }
+//    return positions;
+//  }
+
+  public List<Position> findAll() throws SQLException {
+    try (Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM position")) {
+
+      List<Position> positions = new ArrayList<>();
       while (resultSet.next()) {
-        positions.add(mapToPosition(resultSet));
+        Position position = mapResultSetToPosition(resultSet);
+        positions.add(position);
       }
-    } catch (SQLException e) {
-      logger.error("Error finding all positions", e);
+      return positions;
     }
-    return positions;
   }
 
   @Override
@@ -71,7 +89,7 @@ public class PositionDao implements CrudDao<Position, String> {
       statement.setString(1, ticker);
       statement.executeUpdate();
     } catch (SQLException e) {
-      logger.error("Error deleting position by id. Ticker: {}", ticker, e);
+      logger.error("Error deleting position by ticker. Ticker: {}", ticker, e);
     }
   }
 
@@ -85,10 +103,38 @@ public class PositionDao implements CrudDao<Position, String> {
     }
   }
 
-  private Position mapToPosition(ResultSet resultSet) throws SQLException {
+  public void delete(Position position) throws SQLException {
+    String sql = "DELETE FROM position WHERE ticker = ?";
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setString(1, position.getTicker());
+      statement.executeUpdate();
+    } catch (SQLException e) {
+      logger.error("Error deleting position by ticker. Ticker: {}", position.getTicker(), e);
+    }
+  }
+
+  @Override
+  public void update(Position entity) throws IllegalArgumentException {
+    String sql = "UPDATE position SET num_of_shares = ? WHERE ticker = ?";
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, entity.getNumOfShares());
+      statement.setString(2, entity.getTicker());
+      statement.executeUpdate();
+    } catch (SQLException e) {
+      logger.error("Error updating position. Ticker: {}", entity.getTicker(), e);
+    }
+  }
+
+
+  private Position mapResultSetToPosition(ResultSet resultSet) throws SQLException {
     String ticker = resultSet.getString("ticker");
     int numOfShares = resultSet.getInt("num_of_shares");
     double valuePaid = resultSet.getDouble("value_paid");
+
+    // Assuming Position class has a constructor like this
     return new Position(ticker, numOfShares, valuePaid);
   }
+
+
 }
+

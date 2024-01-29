@@ -44,6 +44,35 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
 
   @Override
+  public void update(Quote entity) throws IllegalArgumentException {
+    String sql = "UPDATE quote SET open=?, high=?, low=?, price=?, volume=?, latest_trading_day=?, " +
+        "previous_close=?, change=?, change_percent=?, timestamp=? WHERE symbol=?";
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+
+      statement.setDouble(1, entity.getOpen());
+      statement.setDouble(2, entity.getHigh());
+      statement.setDouble(3, entity.getLow());
+      statement.setDouble(4, entity.getPrice());
+      statement.setInt(5, entity.getVolume());
+      statement.setDate(6, new java.sql.Date(entity.getLatestTradingDay().getTime()));
+      statement.setDouble(7, entity.getPreviousClose());
+      statement.setDouble(8, entity.getChange());
+      statement.setString(9, entity.getChangePercent());
+      statement.setTimestamp(10, entity.getTimestamp());
+      statement.setString(11, entity.getTicker());
+
+      // Execute the update
+      statement.executeUpdate();
+    } catch (SQLException e) {
+      // Logging the exception
+      logger.error("Error updating quote entity. Symbol: {}", entity.getTicker(), e);
+    }
+  }
+
+
+
+
+  @Override
   public Optional<Quote> findById(String symbol) throws IllegalArgumentException {
     String sql = "SELECT * FROM quote WHERE symbol = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {

@@ -1,5 +1,6 @@
 package ca.jrvs.apps.jdbc;
 
+import java.sql.SQLException;
 import java.util.Optional;
 
 public interface CrudDao<T, ID> {
@@ -11,6 +12,8 @@ public interface CrudDao<T, ID> {
    * @throws IllegalArgumentException - if id is null
    */
   T save(T entity) throws IllegalArgumentException;
+
+  void update(T entity) throws IllegalArgumentException;
 
   /**
    * Retrieves an entity by its id
@@ -24,7 +27,7 @@ public interface CrudDao<T, ID> {
    * Retrieves all entities
    * @return All entities
    */
-  Iterable<T> findAll();
+  Iterable<T> findAll() throws SQLException;
 
   /**
    * Deletes the entity with the given id. If the entity is not found, it is silently ignored
@@ -38,4 +41,5 @@ public interface CrudDao<T, ID> {
    */
   void deleteAll();
 
+ // void update(Position entity) throws IllegalArgumentException;
 }
