@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.sql.SQLException;
@@ -30,14 +31,15 @@ class PositionDaoTest {
   private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/lilPostgres";
   private static final String DB_USER = "postgres";
   private static final String DB_PASSWORD = "password";
-
+  private QuoteDao quoteDao;
 
   @BeforeEach
   void setUp() throws SQLException {
     // Create an in-memory database connection for testing
     Connection connection = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
     positionDao = new PositionDao(connection);
-
+    JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    quoteDao = new QuoteDao((Connection) jdbcTemplate.getDataSource());
     // Insert test data using DAO methods
     Position position1 = new Position("AAPL", 100, 5000);
     Position position2 = new Position("GOOGL", 50, 7500);
@@ -47,6 +49,7 @@ class PositionDaoTest {
     positionDao.save(position2);
     positionDao.save(position3);
   }
+
 
   @Test
   void testFindById() throws SQLException {
@@ -65,7 +68,6 @@ class PositionDaoTest {
 
   }
 
-
   @Test
   void testFindAll() throws SQLException {
     List<Position> positionlist = (List<Position>) positionDao.findAll();
@@ -78,8 +80,6 @@ class PositionDaoTest {
     // Log positions for debugging
     logger.debug("Positions: {}", positionlist);
   }
-
-
 
   @Test
   void testUpdate() throws SQLException {

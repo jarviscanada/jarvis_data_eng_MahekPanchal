@@ -1,12 +1,12 @@
 package ca.jrvs.apps.jdbc;
 
-    import java.sql.Connection;
-    import java.util.ArrayList;
-    import java.util.List;
-    import java.util.Optional;
-    import java.sql.*;
-    import org.slf4j.Logger;
-    import org.slf4j.LoggerFactory;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.sql.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 public class QuoteDao implements CrudDao<Quote, String> {
   private static final Logger logger = LoggerFactory.getLogger(QuoteDao.class);
   private Connection connection;
@@ -27,7 +27,14 @@ public class QuoteDao implements CrudDao<Quote, String> {
       statement.setDouble(4, entity.getLow());
       statement.setDouble(5, entity.getPrice());
       statement.setInt(6, entity.getVolume());
-      statement.setDate(7, new java.sql.Date(entity.getLatestTradingDay().getTime()));
+
+      // Check if latestTradingDay is not null before calling getTime()
+      if (entity.getLatestTradingDay() != null) {
+        statement.setDate(7, new java.sql.Date(entity.getLatestTradingDay().getTime()));
+      } else {
+        statement.setNull(7, Types.DATE);
+      }
+
       statement.setDouble(8, entity.getPreviousClose());
       statement.setDouble(9, entity.getChange());
       statement.setString(10, entity.getChangePercent());
@@ -42,9 +49,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
     return entity;
   }
 
-
   @Override
-  public void update(Quote entity) throws IllegalArgumentException {
+  public Quote update(Quote entity) throws IllegalArgumentException {
     String sql = "UPDATE quote SET open=?, high=?, low=?, price=?, volume=?, latest_trading_day=?, " +
         "previous_close=?, change=?, change_percent=?, timestamp=? WHERE symbol=?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -54,7 +60,14 @@ public class QuoteDao implements CrudDao<Quote, String> {
       statement.setDouble(3, entity.getLow());
       statement.setDouble(4, entity.getPrice());
       statement.setInt(5, entity.getVolume());
-      statement.setDate(6, new java.sql.Date(entity.getLatestTradingDay().getTime()));
+
+      // Check if latestTradingDay is not null before calling getTime()
+      if (entity.getLatestTradingDay() != null) {
+        statement.setDate(6, new java.sql.Date(entity.getLatestTradingDay().getTime()));
+      } else {
+        statement.setNull(6, Types.DATE);
+      }
+
       statement.setDouble(7, entity.getPreviousClose());
       statement.setDouble(8, entity.getChange());
       statement.setString(9, entity.getChangePercent());
@@ -67,6 +80,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
       // Logging the exception
       logger.error("Error updating quote entity. Symbol: {}", entity.getTicker(), e);
     }
+    return entity;
   }
 
 
@@ -88,16 +102,37 @@ public class QuoteDao implements CrudDao<Quote, String> {
     return Optional.empty();
   }
 
+  //  @Override
+//  public Iterable<Quote> findAll() {
+//    List<Quote> quotes = new ArrayList<>();
+//    String sql = "SELECT * FROM quote";
+//    try (Statement statement = connection.createStatement()) {
+//      ResultSet resultSet = statement.executeQuery(sql);
+//      while (resultSet.next()) {
+//        quotes.add(mapToQuote(resultSet));
+//      }
+//    } catch (SQLException e) {
+//      logger.error("Error finding all quotes", e);
+//    }
+//    return quotes;
+//  }
   @Override
   public Iterable<Quote> findAll() {
     List<Quote> quotes = new ArrayList<>();
     String sql = "SELECT * FROM quote";
+    // Add this logging statement before executing the query
+    logger.info("Executing SQL query: {}", sql);
+
     try (Statement statement = connection.createStatement()) {
+      logger.info("Database connection established successfully.");
       ResultSet resultSet = statement.executeQuery(sql);
       while (resultSet.next()) {
-        quotes.add(mapToQuote(resultSet));
+        Quote quote = mapToQuote(resultSet);
+        quotes.add(quote);
+        logger.info("Retrieved Quote: {}", quote);
       }
     } catch (SQLException e) {
+      logger.error("Error establishing database connection", e);
       logger.error("Error finding all quotes", e);
     }
     return quotes;

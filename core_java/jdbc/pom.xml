@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -7,7 +8,6 @@
   <groupId>ca.jrvs.apps</groupId>
   <artifactId>jdbc</artifactId>
   <version>1.0-SNAPSHOT</version>
-
 
   <properties>
     <httpclient.version>4.5.13</httpclient.version>
@@ -18,20 +18,17 @@
 
   <dependencies>
 
-
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.2.5</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
     <dependency>
       <groupId>com.jayway.jsonpath</groupId>
       <artifactId>json-path</artifactId>
       <version>2.8.0</version>
     </dependency>
-
 
     <!-- Jackson Core -->
     <dependency>
@@ -126,21 +123,20 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-activemq</artifactId>
-      <version>2.6.3</version> <!-- Use the version appropriate for your project -->
+      <version>2.6.3</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-artemis</artifactId>
-      <version>2.6.3</version> <!-- Use the version appropriate for your project -->
+      <version>2.6.3</version>
     </dependency>
 
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
-      <version>1.9.7</version> <!-- Use the version appropriate for your project -->
+      <version>1.9.7</version>
     </dependency>
-
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -148,33 +144,30 @@
       <version>2.6.3</version>
     </dependency>
 
-
-      <dependency>
-        <groupId>com.github.ben-manes.caffeine</groupId>
-        <artifactId>caffeine</artifactId>
-        <version>3.0.4</version>
-      </dependency>
-
     <dependency>
-        <groupId>com.datastax.oss</groupId>
-        <artifactId>java-driver-core</artifactId>
-        <version>4.14.0</version>
-      </dependency>
-
-
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-couchbase</artifactId>
-        <version>2.6.3</version>
-      </dependency>
-
-
-    <!-- Database Driver (PostgreSQL in this example) -->
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <artifactId>caffeine</artifactId>
+      <version>3.0.4</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.datastax.oss</groupId>
+      <artifactId>java-driver-core</artifactId>
+      <version>4.14.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-couchbase</artifactId>
+      <version>2.6.3</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+
 
   </dependencies>
 

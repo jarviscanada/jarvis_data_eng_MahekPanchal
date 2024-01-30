@@ -11,13 +11,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class PositionDao implements CrudDao<Position, String> {
   private static final Logger logger = LoggerFactory.getLogger(PositionDao.class);
   private final Connection connection;
+
 
   //@Autowired
   public PositionDao(Connection connection) {
@@ -114,7 +114,7 @@ public class PositionDao implements CrudDao<Position, String> {
   }
 
   @Override
-  public void update(Position entity) throws IllegalArgumentException {
+  public Quote update(Position entity) throws IllegalArgumentException {
     String sql = "UPDATE position SET num_of_shares = ? WHERE ticker = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setInt(1, entity.getNumOfShares());
@@ -123,6 +123,7 @@ public class PositionDao implements CrudDao<Position, String> {
     } catch (SQLException e) {
       logger.error("Error updating position. Ticker: {}", entity.getTicker(), e);
     }
+    return null;
   }
 
 

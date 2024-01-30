@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import org.springframework.data.annotation.Id;
+
 
 public class Quote {
-
   @JsonProperty("01. symbol")
   private String ticker; // id
 
@@ -43,7 +44,7 @@ public class Quote {
   @JsonProperty("companyName")
   private String companyName;
 
-  public Quote() {
+  public Quote(String aapl, double v) {
   }
 
 
@@ -130,6 +131,8 @@ public class Quote {
   public void setLatestTradingDay(Date latestTradingDay) {
     this.latestTradingDay = latestTradingDay;
   }
+
+
 
   public double getPreviousClose() {
     return previousClose;
