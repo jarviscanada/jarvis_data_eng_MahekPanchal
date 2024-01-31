@@ -47,9 +47,6 @@ public class QuoteHttpHelper {
       QuoteWrapper wrapper = objectMapper.readValue(responseBody, QuoteWrapper.class);
       Quote quote = wrapper.getQuote();
 
-      // Parse the JSON response and create a Quote object using Jackson
-     // Quote quote = objectMapper.readValue(responseBody, Quote.class);
-
       // Return the Quote object
       return quote;
     }
