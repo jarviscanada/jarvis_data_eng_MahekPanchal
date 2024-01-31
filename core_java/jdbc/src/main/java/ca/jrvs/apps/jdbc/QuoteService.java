@@ -3,6 +3,7 @@ package ca.jrvs.apps.jdbc;
 import java.io.IOException;
 import java.util.Optional;
 
+
 public class QuoteService {
 
   private final QuoteDao quoteDao;
@@ -76,6 +77,24 @@ public class QuoteService {
     return quoteOptional.orElseThrow(() -> new IllegalArgumentException("Invalid symbol: " + symbol));
   }
 
-  public void sellShares(String ticker, int numOfShares) {
+  /******************************************************************
+   * Updated method
+   * */
+  public boolean sellShares(String symbol, int volume) {
+    Optional<Quote> quoteOptional = quoteDao.findById(symbol);
+    if (quoteOptional.isPresent()) {
+      Quote quote = quoteOptional.get();
+      int availableVolume = quote.getVolume();
+      // You might want to add additional checks here based on your requirements
+      // For example, check if the user has enough shares to sell
+      if (volume <= availableVolume) {
+        // Update the volume and save the quote
+        quote.setVolume(availableVolume + volume);
+        quoteDao.update(quote);
+        return true;
+      }
+    }
+    return false;
   }
+
 }

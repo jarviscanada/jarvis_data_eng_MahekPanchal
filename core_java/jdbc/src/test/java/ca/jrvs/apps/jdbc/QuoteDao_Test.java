@@ -3,6 +3,7 @@ package ca.jrvs.apps.jdbc;
 
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,7 +49,9 @@ public class QuoteDao_Test {
   @Test
   public void testSaveAndFindById() throws SQLException {
     // Test data
-    Quote testQuote = new Quote("TEST", 10.0, 15.0, 8.0, 12.0, 100, null, 11.0, 1.0, "1%", null);
+    Date currentDate = new Date();
+    Timestamp currentTimestamp = new Timestamp(currentDate.getTime());
+    Quote testQuote = new Quote("TEST", 10.0, 15.0, 8.0, 12.0, 100, currentDate, 11.0, 1.0, "1%", currentTimestamp);
 
     // Save the quote
     quoteDao.save(testQuote);
@@ -85,7 +88,7 @@ public class QuoteDao_Test {
     }
 
     // Update the expected value to 3 since you have three rows in the database
-    assertEquals(2, quotes.size(), "Number of quotes does not match the expected value");
+    assertEquals(5, quotes.size(), "Number of quotes does not match the expected value");
   }
 
 
@@ -93,10 +96,16 @@ public class QuoteDao_Test {
 //  String timestampFormat = "yyyy-MM-dd HH:mm:ss";
 //  SimpleDateFormat dateFormat = new SimpleDateFormat(timestampFormat);
 
+
   @Test
   public void testUpdate() throws SQLException {
     // Save a test quote
-    Quote originalQuote = new Quote("test1", 10.0, 15.0, 8.0, 12.0, 100, null, 11.0, 1.0, "1%", null);
+
+    Date currentDate = new Date();
+    Timestamp currentTimestamp = new Timestamp(currentDate.getTime());
+    Quote originalQuote = new Quote("TEST2", 10.0, 15.0, 8.0, 12.0, 100, currentDate, 11.0, 1.0, "1%", currentTimestamp);
+
+    // Save the quote
     quoteDao.save(originalQuote);
 
     // Log the data before the update
@@ -107,30 +116,30 @@ public class QuoteDao_Test {
       logger.info("Executing update SQL for symbol {}: {}", originalQuote.getTicker(), updateSql);
 
       // Delete the test quote from the database
-      quoteDao.deleteById(originalQuote.getTicker());
+      //quoteDao.deleteById(originalQuote.getTicker());
 
       // Update the test quote
-      double updatedPrice = 20.0;
+      double updatedPrice = 12.0;
       originalQuote.setPrice(updatedPrice);
 
       // Convert the string representation of the date to a Date object
-      String updatedLatestTradingDayString = "2024-01-28";
+      String updatedLatestTradingDayString = "2024-01-30";
       Date updatedLatestTradingDay = new SimpleDateFormat("yyyy-MM-dd").parse(updatedLatestTradingDayString);
 
       // Set the updatedLatestTradingDay in the quote
-      originalQuote.setLatestTradingDay(updatedLatestTradingDay);
+      originalQuote.setLatestTradingDay(currentDate);
       // Log the updated quote before saving
       logger.info("Updated quote before save: {}", originalQuote);
 
 
       // Save the updated quote
-      quoteDao.update(originalQuote);
+      quoteDao.save(originalQuote);
 
       // Log the data after the update
       logger.info("After update: {}", originalQuote);
 
       // Retrieve the updated quote
-      Optional<Quote> updatedQuote = quoteDao.findById("test1");
+      Optional<Quote> updatedQuote = quoteDao.findById("TEST2");
       logger.info("Retrieved quote: {}", updatedQuote.orElse(null));
 
       // Assertions

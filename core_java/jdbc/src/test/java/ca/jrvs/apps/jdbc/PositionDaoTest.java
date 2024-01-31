@@ -38,15 +38,24 @@ class PositionDaoTest {
     Connection connection = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
     positionDao = new PositionDao(connection);
 
-    // Insert test data using DAO methods
-    Position position1 = new Position("AAPL", 100, 5000);
-    Position position2 = new Position("GOOGL", 50, 7500);
-    Position position3 = new Position("MSFT", 75, 6000);
+    try {
+      // Insert test data using DAO methods
+      Position position1 = new Position("AAPL", 100, 5000);
+      Position position2 = new Position("GOOGL", 50, 7500);
+      Position position3 = new Position("MSFT", 75, 6000);
 
-    positionDao.save(position1);
-    positionDao.save(position2);
-    positionDao.save(position3);
+      positionDao.save(position1);
+      positionDao.save(position2);
+      positionDao.save(position3);
+
+      // Commit the transaction
+      connection.commit();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
+
+
 
   @Test
   void testFindById() throws SQLException {
@@ -68,16 +77,25 @@ class PositionDaoTest {
 
   @Test
   void testFindAll() throws SQLException {
+    // When
     List<Position> positionlist = (List<Position>) positionDao.findAll();
-    assertNotNull(positionlist);
-    assertTrue(positionlist.size() > 0);
 
     // Log the size of the positions list
     logger.debug("Number of positions: {}", positionlist.size());
 
     // Log positions for debugging
     logger.debug("Positions: {}", positionlist);
+
+    // Then
+    assertNotNull(positionlist);
+
+    // Log the actual size using the logger
+    logger.debug("Actual size of positionlist: {}", positionlist.size());
+
+    assertTrue(positionlist.size() > 0, "Position list should have at least one item");
   }
+
+
 
 
 
