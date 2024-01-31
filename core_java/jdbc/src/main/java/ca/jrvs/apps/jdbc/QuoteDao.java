@@ -108,9 +108,6 @@ public class QuoteDao implements CrudDao<Quote, String> {
     }
   }
 
-
-
-
   @Override
   public Optional<Quote> findById(String symbol) throws IllegalArgumentException {
     String sql = "SELECT * FROM quote WHERE symbol = ?";
@@ -185,6 +182,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
       throw e;
     }
   }
+
+
 }
 
 
