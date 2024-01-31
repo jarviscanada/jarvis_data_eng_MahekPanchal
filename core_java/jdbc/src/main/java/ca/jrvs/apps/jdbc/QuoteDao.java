@@ -15,32 +15,71 @@ public class QuoteDao implements CrudDao<Quote, String> {
     this.connection = connection;
   }
 
-  @Override
-  public Quote save(Quote entity) throws IllegalArgumentException {
-    String sql = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, " +
-        "previous_close, change, change_percent, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+    @Override
+    public Quote save(Quote entity) throws IllegalArgumentException {
+      String sql = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, " +
+          "previous_close, change, change_percent, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-      statement.setString(1, entity.getTicker());
-      statement.setDouble(2, entity.getOpen());
-      statement.setDouble(3, entity.getHigh());
-      statement.setDouble(4, entity.getLow());
-      statement.setDouble(5, entity.getPrice());
-      statement.setInt(6, entity.getVolume());
-      statement.setDate(7, new java.sql.Date(entity.getLatestTradingDay().getTime()));
-      statement.setDouble(8, entity.getPreviousClose());
-      statement.setDouble(9, entity.getChange());
-      statement.setString(10, entity.getChangePercent());
-      statement.setTimestamp(11, entity.getTimestamp());
+        statement.setString(1, entity.getTicker());
+        statement.setDouble(2, entity.getOpen());
+        statement.setDouble(3, entity.getHigh());
+        statement.setDouble(4, entity.getLow());
+        statement.setDouble(5, entity.getPrice());
+        statement.setInt(6, entity.getVolume());
+        statement.setDate(7, new java.sql.Date(entity.getLatestTradingDay().getTime()));
+        statement.setDouble(8, entity.getPreviousClose());
+        statement.setDouble(9, entity.getChange());
+        statement.setString(10, entity.getChangePercent());
+        statement.setTimestamp(11, entity.getTimestamp());
 
-      // Execute the update
-      statement.executeUpdate();
-    } catch (SQLException e) {
-      // Logging the exception
-      logger.error("Error saving quote entity. Symbol: {}", entity.getTicker(), e);
+        // Execute the update
+        statement.executeUpdate();
+
+        // Get the generated keys
+        ResultSet generatedKeys = statement.getGeneratedKeys();
+        if (generatedKeys.next()) {
+          // Set the generated ID to the entity
+          entity.setId(generatedKeys.getString(1));
+        } else {
+          throw new SQLException("Failed to retrieve auto-generated ID.");
+        }
+
+      } catch (SQLException e) {
+        // Logging the exception
+        logger.error("Error saving quote entity. Symbol: {}", entity.getTicker(), e);
+      }
+      return entity;
     }
-    return entity;
-  }
+
+
+
+//  @Override
+//  public Quote save(Quote entity) throws IllegalArgumentException {
+//    String sql = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, " +
+//        "previous_close, change, change_percent, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+//
+//      statement.setString(1, entity.getTicker());
+//      statement.setDouble(2, entity.getOpen());
+//      statement.setDouble(3, entity.getHigh());
+//      statement.setDouble(4, entity.getLow());
+//      statement.setDouble(5, entity.getPrice());
+//      statement.setInt(6, entity.getVolume());
+//      statement.setDate(7, new java.sql.Date(entity.getLatestTradingDay().getTime()));
+//      statement.setDouble(8, entity.getPreviousClose());
+//      statement.setDouble(9, entity.getChange());
+//      statement.setString(10, entity.getChangePercent());
+//      statement.setTimestamp(11, entity.getTimestamp());
+//
+//      // Execute the update
+//      statement.executeUpdate();
+//    } catch (SQLException e) {
+//      // Logging the exception
+//      logger.error("Error saving quote entity. Symbol: {}", entity.getTicker(), e);
+//    }
+//    return entity;
+//  }
 
 
   @Override

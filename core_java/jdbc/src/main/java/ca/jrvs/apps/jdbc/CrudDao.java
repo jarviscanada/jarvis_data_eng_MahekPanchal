@@ -13,8 +13,6 @@ public interface CrudDao<T, ID> {
    */
   T save(T entity) throws IllegalArgumentException;
 
-  void update(T entity) throws IllegalArgumentException;
-
   /**
    * Retrieves an entity by its id
    * @param id - must not be null
@@ -28,6 +26,8 @@ public interface CrudDao<T, ID> {
    * @return All entities
    */
   Iterable<T> findAll() throws SQLException;
+
+  void update(T entity) throws IllegalArgumentException;
 
   /**
    * Deletes the entity with the given id. If the entity is not found, it is silently ignored

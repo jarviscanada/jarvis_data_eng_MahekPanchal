@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class QuoteHttpHelper {
 
-  private final String apiKey;
+  final String apiKey;
   private final OkHttpClient client;
   private final ObjectMapper objectMapper;
 

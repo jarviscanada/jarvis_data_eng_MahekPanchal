@@ -1,0 +1,8 @@
+ca/jrvs/apps/jdbc/QuoteService_UnitTest.class
+ca/jrvs/apps/jdbc/TestApplication.class
+ca/jrvs/apps/jdbc/PositionDaoTest.class
+ca/jrvs/apps/jdbc/TestDataSourceConfig.class
+ca/jrvs/apps/jdbc/QuoteDao.class
+ca/jrvs/apps/jdbc/QuoteHttpHelperTest.class
+ca/jrvs/apps/jdbc/QuoteService_UnitTest$QuoteDaoStub.class
+ca/jrvs/apps/jdbc/QuoteService_UnitTest$QuoteHttpHelperStub.class

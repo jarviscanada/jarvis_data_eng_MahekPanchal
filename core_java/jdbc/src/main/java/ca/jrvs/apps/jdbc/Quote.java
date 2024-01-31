@@ -46,6 +46,15 @@ public class Quote {
   public Quote() {
   }
 
+  private String id;
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public Quote(String companyName) {
     this.companyName = companyName;

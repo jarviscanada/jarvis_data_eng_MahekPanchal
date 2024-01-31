@@ -8,6 +8,7 @@ public class QuoteService {
   private final QuoteDao quoteDao;
   private final QuoteHttpHelper quoteHttpHelper;
 
+
   public QuoteService(QuoteDao quoteDao, QuoteHttpHelper quoteHttpHelper) {
     this.quoteDao = quoteDao;
     this.quoteHttpHelper = quoteHttpHelper;
@@ -23,6 +24,7 @@ public class QuoteService {
   public Quote saveQuote(String symbol) throws IOException {
     Quote quote = quoteHttpHelper.fetchQuoteInfo(symbol);
     if (quote != null) {
+      // Ensure that the save method signature is correct in QuoteDao
       quoteDao.save(quote);
     }
     return quote;
