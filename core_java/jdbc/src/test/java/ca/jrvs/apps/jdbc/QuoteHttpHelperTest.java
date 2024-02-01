@@ -1,9 +1,6 @@
 package ca.jrvs.apps.jdbc;
 
-import ca.jrvs.apps.jdbc.Quote;
-import ca.jrvs.apps.jdbc.QuoteHttpHelper;
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class QuoteHttpHelperTest {

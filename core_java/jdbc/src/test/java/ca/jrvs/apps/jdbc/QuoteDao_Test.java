@@ -1,13 +1,10 @@
 package ca.jrvs.apps.jdbc;
 
 
-import java.sql.Statement;
+
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ca.jrvs.apps.jdbc.TestDataSourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

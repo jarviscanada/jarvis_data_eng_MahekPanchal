@@ -4,11 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Optional;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -29,28 +26,6 @@ public class QuoteService_IntTest {
     quoteService = new QuoteService(quoteDao, quoteHttpHelper);
   }
 
-//  @Test
-//  public void testSaveQuote() throws IOException {
-//    // Given
-//    String symbol = "AAPL";
-//    Quote fetchedQuote = new Quote();
-//
-//    // Mock the behavior of quoteDao.save to return the given quote
-//    doReturn(fetchedQuote).when(quoteDao).save(any(Quote.class));
-//
-//    // Mock the behavior of quoteHttpHelper.fetchQuoteInfo to return the fetched quote
-//    when(quoteHttpHelper.fetchQuoteInfo(eq(symbol))).thenReturn(fetchedQuote);
-//
-//    // When
-//    Quote savedQuote = quoteService.saveQuote(symbol);
-//
-//    // Then
-//    assertEquals(fetchedQuote, savedQuote);
-//    // Verify that quoteDao.save was called with the expected quote
-//    verify(quoteDao, times(1)).save(any(Quote.class));
-//  }
-
-  // modified this method to get NotEnoughShares test case running
   @Test
   public void testSaveQuote() throws IOException {
     // Given

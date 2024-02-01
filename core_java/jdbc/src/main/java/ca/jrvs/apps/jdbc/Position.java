@@ -1,8 +1,20 @@
 package ca.jrvs.apps.jdbc;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Column;
+
+
+@Entity
+@Table(name = "position")
 public class Position {
+  @Id
+  @Column(name = "ticker")
   private String ticker;
+  @Column(name = "num_of_shares")
   private int numOfShares;
+  @Column(name = "market_value")
   private double marketValue;
 
   // Constructor

@@ -71,4 +71,10 @@ public class PositionService {
       throw new IllegalArgumentException("No shares to sell for symbol: " + ticker);
     }
   }
+// added this method to retrieve the position for a given symbol.
+//  public Position getPositionBySymbol(String symbol) {
+//    return positionDao.findBySymbol(symbol)
+//        .orElseThrow(() -> new IllegalArgumentException("Position not found for symbol: " + symbol));
+//  }
+
 }

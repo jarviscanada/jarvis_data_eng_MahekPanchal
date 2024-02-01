@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,7 +23,7 @@ class PositionDaoTest {
 
   private static final Logger logger = LoggerFactory.getLogger(PositionDaoTest.class);
 
-  @Autowired
+  //Autowired
   private PositionDao positionDao;
 
   private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/lilPostgres";
@@ -54,7 +53,6 @@ class PositionDaoTest {
       e.printStackTrace();
     }
   }
-
 
 
   @Test
@@ -96,9 +94,6 @@ class PositionDaoTest {
   }
 
 
-
-
-
   @Test
   void testUpdate() throws SQLException {
     // Assuming you have a valid ticker in your test database
@@ -124,6 +119,7 @@ class PositionDaoTest {
     }
   }
 
+
   @Test
   void testDelete() throws SQLException {
     String tickerToDelete = "AAPL";
@@ -139,6 +135,7 @@ class PositionDaoTest {
     Optional<Position> deletedPosition = positionDao.findById(tickerToDelete);
     assertFalse(deletedPosition.isPresent());
   }
+
 
 
 

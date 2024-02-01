@@ -54,21 +54,6 @@ public class PositionDao implements CrudDao<Position, String> {
   }
 
 
-//  @Override
-//  public Iterable<Position> findAll() {
-//    List<Position> positions = new ArrayList<>();
-//    String sql = "SELECT * FROM position";
-//    try (Statement statement = connection.createStatement()) {
-//      ResultSet resultSet = statement.executeQuery(sql);
-//      while (resultSet.next()) {
-//        positions.add(mapToPosition(resultSet));
-//      }
-//    } catch (SQLException e) {
-//      logger.error("Error finding all positions", e);
-//    }
-//    return positions;
-//  }
-
   public List<Position> findAll() throws SQLException {
     try (Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM position")) {
@@ -130,8 +115,6 @@ public class PositionDao implements CrudDao<Position, String> {
     String ticker = resultSet.getString("ticker");
     int numOfShares = resultSet.getInt("num_of_shares");
     double valuePaid = resultSet.getDouble("value_paid");
-
-    // Assuming Position class has a constructor like this
     return new Position(ticker, numOfShares, valuePaid);
   }
 

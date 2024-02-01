@@ -2,8 +2,9 @@ package ca.jrvs.apps.jdbc;
 
 import java.io.IOException;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class QuoteService {
 
   private final QuoteDao quoteDao;
@@ -64,6 +65,7 @@ public class QuoteService {
     }
     return false;
   }
+
 
   /**
    * Get the latest quote for a given symbol.

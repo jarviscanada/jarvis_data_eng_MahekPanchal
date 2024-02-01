@@ -175,7 +175,31 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-couchbase</artifactId>
         <version>2.6.3</version>
-      </dependency>
+    </dependency>
+
+
+      <!-- Hibernate JPA Provider -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.5.7.Final</version>
+    </dependency>
+
+      <!-- Hibernate Entity Manager (JPA API) -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.5.7.Final</version>
+    </dependency>
+
+      <!-- Database Driver (PostgreSQL in this example) -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.23</version>
+    </dependency>
+
+
 
 
   </dependencies>
