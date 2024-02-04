@@ -59,7 +59,9 @@ public class QuoteService {
       if (volume <= availableVolume) {
         // Update the volume and save the quote
         quote.setVolume(availableVolume - volume);
+        //quote.setPrice(0);
         quoteDao.update(quote);
+
         return true;
       }
     }

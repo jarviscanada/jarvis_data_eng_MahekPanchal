@@ -3,7 +3,8 @@ package ca.jrvs.apps.jdbc;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {"ca.jrvs.apps.jdbc", "ca.jrvs.apps.jdbc.DatabaseConfig"})
 public class JsonParser {
-
+  private static final Logger logger = LoggerFactory.getLogger(JsonParser.class);
   public static String toJson(Object object, boolean prettyJson, boolean includeNullValues)
       throws JsonProcessingException {
     ObjectMapper m = new ObjectMapper();
@@ -82,7 +83,7 @@ public class JsonParser {
         + "}";
 
     Company company = toObjectFromJson(companyStr, Company.class);
-    System.out.println(toJson(company, true, false));
+    logger.info(toJson(company, true, false));
   }
 
 

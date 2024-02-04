@@ -21,9 +21,9 @@ public class PositionService {
 
     Quote latestQuote = quoteService.getLatestQuote(ticker);
 
-    if (latestQuote.getVolume() < numberOfShares) {
-      throw new IllegalArgumentException("Not enough available volume for purchase");
-    }
+//    if (latestQuote.getVolume() < numberOfShares) {
+//      throw new IllegalArgumentException("Not enough available volume for purchase");
+//    }
 
     double marketValue = numberOfShares * price;
     Position position = positionDao.findById(ticker)
@@ -71,10 +71,6 @@ public class PositionService {
       throw new IllegalArgumentException("No shares to sell for symbol: " + ticker);
     }
   }
-// added this method to retrieve the position for a given symbol.
-//  public Position getPositionBySymbol(String symbol) {
-//    return positionDao.findBySymbol(symbol)
-//        .orElseThrow(() -> new IllegalArgumentException("Position not found for symbol: " + symbol));
-//  }
+
 
 }

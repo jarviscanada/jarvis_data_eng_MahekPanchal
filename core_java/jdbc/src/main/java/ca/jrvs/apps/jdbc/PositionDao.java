@@ -26,7 +26,7 @@ public class PositionDao implements CrudDao<Position, String> {
 
   @Override
   public Position save(Position entity) throws IllegalArgumentException {
-    String sql = "INSERT INTO position (ticker, num_of_shares, value_paid) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO position (symbol, number_of_shares, value_paid) VALUES (?, ?, ?)";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, entity.getTicker());
       statement.setInt(2, entity.getNumOfShares());
@@ -40,7 +40,7 @@ public class PositionDao implements CrudDao<Position, String> {
 
   @Override
   public Optional<Position> findById(String ticker) throws IllegalArgumentException {
-    String sql = "SELECT * FROM position WHERE ticker = ?";
+    String sql = "SELECT * FROM position WHERE symbol = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, ticker);
       ResultSet resultSet = statement.executeQuery();
@@ -69,7 +69,7 @@ public class PositionDao implements CrudDao<Position, String> {
 
   @Override
   public void deleteById(String ticker) throws IllegalArgumentException {
-    String sql = "DELETE FROM position WHERE ticker = ?";
+    String sql = "DELETE FROM position WHERE symbol = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, ticker);
       statement.executeUpdate();
@@ -89,7 +89,7 @@ public class PositionDao implements CrudDao<Position, String> {
   }
 
   public void delete(Position position) throws SQLException {
-    String sql = "DELETE FROM position WHERE ticker = ?";
+    String sql = "DELETE FROM position WHERE symbol = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, position.getTicker());
       statement.executeUpdate();
@@ -100,10 +100,11 @@ public class PositionDao implements CrudDao<Position, String> {
 
   @Override
   public void update(Position entity) throws IllegalArgumentException {
-    String sql = "UPDATE position SET num_of_shares = ? WHERE ticker = ?";
+    String sql = "UPDATE position SET number_of_shares = ?, value_paid = ? WHERE symbol = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setInt(1, entity.getNumOfShares());
-      statement.setString(2, entity.getTicker());
+      statement.setDouble(2, entity.getMarketValue());
+      statement.setString(3, entity.getTicker());
       statement.executeUpdate();
     } catch (SQLException e) {
       logger.error("Error updating position. Ticker: {}", entity.getTicker(), e);
@@ -112,8 +113,8 @@ public class PositionDao implements CrudDao<Position, String> {
 
 
   private Position mapResultSetToPosition(ResultSet resultSet) throws SQLException {
-    String ticker = resultSet.getString("ticker");
-    int numOfShares = resultSet.getInt("num_of_shares");
+    String ticker = resultSet.getString("symbol");
+    int numOfShares = resultSet.getInt("number_of_shares");
     double valuePaid = resultSet.getDouble("value_paid");
     return new Position(ticker, numOfShares, valuePaid);
   }

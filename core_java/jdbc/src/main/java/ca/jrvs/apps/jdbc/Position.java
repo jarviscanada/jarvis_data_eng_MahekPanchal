@@ -10,11 +10,11 @@ import javax.persistence.Column;
 @Table(name = "position")
 public class Position {
   @Id
-  @Column(name = "ticker")
+  @Column(name = "symbol")
   private String ticker;
-  @Column(name = "num_of_shares")
+  @Column(name = "number_of_shares")
   private int numOfShares;
-  @Column(name = "market_value")
+  @Column(name = "value_paid")
   private double marketValue;
 
   // Constructor
