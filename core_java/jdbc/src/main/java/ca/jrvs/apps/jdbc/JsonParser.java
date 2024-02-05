@@ -84,6 +84,7 @@ public class JsonParser {
 
     Company company = toObjectFromJson(companyStr, Company.class);
     logger.info(toJson(company, true, false));
+
   }
 
 

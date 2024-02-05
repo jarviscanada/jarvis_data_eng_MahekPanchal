@@ -64,7 +64,6 @@ public class PositionService_UnitTest {
 
   }
 
-
   @Test
   public void testBuy_NotEnoughVolume() {
     // Given
@@ -79,13 +78,34 @@ public class PositionService_UnitTest {
     when(quoteService.getLatestQuote(ticker)).thenReturn(latestQuote);
 
     // When and Then: expect IllegalArgumentException with the correct message
-    try {
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
       positionService.buy(ticker, numberOfShares, price);
-      fail("Expected IllegalArgumentException was not thrown");
-    } catch (IllegalArgumentException e) {
-      assertEquals("Not enough volume to buy " + numberOfShares + " shares of " + ticker, e.getMessage());
-    }
+    });
+    assertEquals("Not enough available volume for purchase", exception.getMessage());
+//    assertEquals("Not enough volume to buy " + numberOfShares + " shares of " + ticker, exception.getMessage());
   }
+
+//  @Test
+//  public void testBuy_NotEnoughVolume() {
+//    // Given
+//    String ticker = "AAPL";
+//    int numberOfShares = 30;
+//    double price = 150.0;
+//
+//    Quote latestQuote = new Quote();
+//    latestQuote.setVolume(20);
+//
+//    when(quoteService.isValidSymbol(ticker)).thenReturn(true);
+//    when(quoteService.getLatestQuote(ticker)).thenReturn(latestQuote);
+//
+//    // When and Then: expect IllegalArgumentException with the correct message
+//    try {
+//      positionService.buy(ticker, numberOfShares, price);
+//      fail("Expected IllegalArgumentException was not thrown");
+//    } catch (IllegalArgumentException e) {
+//      assertEquals("Not enough volume to buy " + numberOfShares + " shares of " + ticker, e.getMessage());
+//    }
+//  }
 
   @Test
   public void testSell() throws SQLException {

@@ -181,8 +181,16 @@ public class Quote {
   }
 
   public Timestamp getTimestamp() {
-    return timestamp;
+    if (latestTradingDay != null) {
+      return new Timestamp(latestTradingDay.getTime());
+    }
+    return null; // or return a default Timestamp if appropriate
   }
+
+
+//  public Timestamp getTimestamp() {
+//    return timestamp;
+//  }
 
   public void setTimestamp(Timestamp timestamp) {
     this.timestamp = timestamp;

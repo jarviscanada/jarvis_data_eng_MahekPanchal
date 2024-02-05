@@ -26,4 +26,7 @@ class QuoteHttpHelperTest {
       assertNotNull(quote.getChangePercent());
     });
   }
+
+
+
 }

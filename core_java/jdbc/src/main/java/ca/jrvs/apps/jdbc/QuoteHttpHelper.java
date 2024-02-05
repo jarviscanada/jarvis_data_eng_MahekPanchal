@@ -36,29 +36,72 @@ public class QuoteHttpHelper {
    * @throws IOException If an error occurs during the HTTP request
    * @throws IllegalArgumentException If no data was found for the given symbol
    */
-  public Quote fetchQuoteInfo(String symbol) throws IOException, IllegalArgumentException {
-    String apiUrl = "https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&datatype=json";
-    logger.info("API URL: " + apiUrl);
 
-    Request request = new Request.Builder()
-        .url(apiUrl)
-        .header("X-RapidAPI-Key", alphaVantageApiKey)
-        .header("X-RapidAPI-Host", "alpha-vantage.p.rapidapi.com")
-        .build();
+  public Quote fetchQuoteInfo(String symbol) {
+    String url = "https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol;
 
-    try (Response response = client.newCall(request).execute()) {
-      if (!response.isSuccessful()) {
-        throw new IllegalArgumentException("Failed to fetch quote data for symbol: " + symbol);
+    try {
+      if (apiKey == null) {
+        throw new IllegalArgumentException("API key is null");
       }
 
-      String responseBody = response.body().string();
+      Request request = new Request.Builder()
+          .url(url)
+          .header("Content-Type", "application/json")
+          .header("Accept", "application/json")
+          .header("x-rapidapi-host", "alpha-vantage.p.rapidapi.com")
+          .header("x-rapidapi-key", apiKey)
+          .build();
 
-      QuoteWrapper wrapper = objectMapper.readValue(responseBody, QuoteWrapper.class);
-      Quote quote = wrapper.getQuote();
-
-      // Return the Quote object
-      return quote;
+      Response response = client.newCall(request).execute();
+      if (response.isSuccessful()) {
+        String responseBody = response.body().string();
+        return parseJsonToQuote(responseBody, Quote.class);
+      } else {
+        logger.error("Failed to fetch quote information for {}: {}", symbol, response.message());
+      }
+    } catch (IOException e) {
+      logger.error("Failed to fetch quote information for {}: {}", symbol, e.getMessage());
+    } catch (Exception e) {
+      logger.error("Error processing quote information for {}: {}", symbol, e.getMessage());
     }
+
+    return null;
   }
+
+  private <T> T parseJsonToQuote(String json, Class<T> clazz) throws IOException {
+    return JsonParser.toObjectFromJson(json, clazz);
+  }
+
+
+
+
+//  public Quote fetchQuoteInfo(String symbol) throws IOException, IllegalArgumentException {
+//    String apiUrl = "https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&datatype=json";
+//    logger.info("API URL: " + apiUrl);
+//
+//    Request request = new Request.Builder()
+//        .url(apiUrl)
+//        .header("X-RapidAPI-Key", alphaVantageApiKey)
+//        .header("X-RapidAPI-Host", "alpha-vantage.p.rapidapi.com")
+//        .build();
+//
+//    try (Response response = client.newCall(request).execute()) {
+//      if (!response.isSuccessful()) {
+//        throw new IllegalArgumentException("Failed to fetch quote data for symbol: " + symbol);
+//      }
+//
+//      String responseBody = response.body().string();
+//
+//      QuoteWrapper wrapper = objectMapper.readValue(responseBody, QuoteWrapper.class);
+//      Quote quote = wrapper.getQuote();
+//
+//      // Return the Quote object
+//      return quote;
+//    }
+//  }
+
+
+
 }
 

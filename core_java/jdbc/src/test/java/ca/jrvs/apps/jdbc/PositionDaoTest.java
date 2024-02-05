@@ -99,31 +99,55 @@ class PositionDaoTest {
     assertTrue(positionlist.size() > 0, "Position list should have at least one item");
   }
 
-
   @Test
   void testUpdate() throws SQLException {
     // Assuming you have a valid ticker in your test database
     Optional<Position> existingPosition = positionDao.findById("AAPL");
 
-    // Updated line - Check if the position is NOT present
-    assertTrue(!existingPosition.isPresent());
+    // Updated line - Check if the position is present
+    assertTrue(existingPosition.isPresent());
 
     // Skip the update if the position is NOT present
     if (existingPosition.isPresent()) {
       Position updatedPosition = existingPosition.get();
-      updatedPosition.setNumOfShares(100); // Update the quantity
+      updatedPosition.setNumOfShares(144); // Update the quantity
       positionDao.update(updatedPosition);
 
       // Retrieve the position again and assert that the quantity has been updated
       Optional<Position> retrievedPosition = positionDao.findById("AAPL");
 
-      // Updated line - Check if the position is present
+      // Assert that the position is present
       assertTrue(retrievedPosition.isPresent());
 
       // Assert that the quantity has been updated
-      assertEquals(100, retrievedPosition.get().getNumOfShares());
+      assertEquals(144, retrievedPosition.get().getNumOfShares());
     }
   }
+
+//  @Test
+//  void testUpdate() throws SQLException {
+//    // Assuming you have a valid ticker in your test database
+//    Optional<Position> existingPosition = positionDao.findById("AAPL");
+//
+//    // Updated line - Check if the position is NOT present
+//    assertTrue(!existingPosition.isPresent());
+//
+//    // Skip the update if the position is NOT present
+//    if (existingPosition.isPresent()) {
+//      Position updatedPosition = existingPosition.get();
+//      updatedPosition.setNumOfShares(144); // Update the quantity
+//      positionDao.update(updatedPosition);
+//
+//      // Retrieve the position again and assert that the quantity has been updated
+//      Optional<Position> retrievedPosition = positionDao.findById("AAPL");
+//
+//      // Updated line - Check if the position is present
+//      assertTrue(retrievedPosition.isPresent());
+//
+//      // Assert that the quantity has been updated
+//      assertEquals(144, retrievedPosition.get().getNumOfShares());
+//    }
+//  }
 
 
   @Test

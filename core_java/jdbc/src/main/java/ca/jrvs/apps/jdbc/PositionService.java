@@ -21,9 +21,9 @@ public class PositionService {
 
     Quote latestQuote = quoteService.getLatestQuote(ticker);
 
-//    if (latestQuote.getVolume() < numberOfShares) {
-//      throw new IllegalArgumentException("Not enough available volume for purchase");
-//    }
+    if (latestQuote.getVolume() < numberOfShares) {
+      throw new IllegalArgumentException("Not enough available volume for purchase");  // RECENT CHANGE
+    }
 
     double marketValue = numberOfShares * price;
     Position position = positionDao.findById(ticker)
