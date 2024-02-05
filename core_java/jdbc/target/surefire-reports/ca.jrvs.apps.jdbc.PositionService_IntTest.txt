@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: ca.jrvs.apps.jdbc.QuoteService_UnitTest
+Test set: ca.jrvs.apps.jdbc.PositionService_IntTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.922 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.126 sec

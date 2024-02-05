@@ -8,9 +8,16 @@ import okhttp3.Response;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 @Service
 public class QuoteHttpHelper {
+  private static final Logger logger = LoggerFactory.getLogger(QuoteDao.class);
 
+  @Value("${alpha.vantage.api.key}")
+  private String alphaVantageApiKey;
   final String apiKey;
   private final OkHttpClient client;
   private final ObjectMapper objectMapper;
@@ -31,9 +38,11 @@ public class QuoteHttpHelper {
    */
   public Quote fetchQuoteInfo(String symbol) throws IOException, IllegalArgumentException {
     String apiUrl = "https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&datatype=json";
+    logger.info("API URL: " + apiUrl);
+
     Request request = new Request.Builder()
         .url(apiUrl)
-        .header("X-RapidAPI-Key", apiKey)
+        .header("X-RapidAPI-Key", alphaVantageApiKey)
         .header("X-RapidAPI-Host", "alpha-vantage.p.rapidapi.com")
         .build();
 

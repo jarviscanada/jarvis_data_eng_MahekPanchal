@@ -1,13 +1,16 @@
 package ca.jrvs.apps.jdbc;
 
 import javax.sql.DataSource;
+//import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.sql.Connection;
 import java.sql.SQLException;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
+@EnableScheduling
 public class DatabaseConfig {
 
   @Bean
@@ -23,5 +26,7 @@ public class DatabaseConfig {
   public Connection connection(DataSource dataSource) throws SQLException {
     return dataSource.getConnection();
   }
+
+
 }
 

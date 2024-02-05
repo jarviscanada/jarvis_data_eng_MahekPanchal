@@ -68,6 +68,22 @@ public class Quote {
     this.companyName = companyName;
   }
 
+//  public Quote(String ticker, double open, double high, double low, double price, int volume,
+//      Date latestTradingDay, double previousClose, double change, String changePercent,
+//      Timestamp timestamp) {
+//    this.ticker = ticker;
+//    this.open = open;
+//    this.high = high;
+//    this.low = low;
+//    this.price = price;
+//    this.volume = volume;
+//    this.latestTradingDay = latestTradingDay;
+//    this.previousClose = previousClose;
+//    this.change = change;
+//    this.changePercent = changePercent;
+//    this.timestamp = timestamp;
+//  }
+
   public Quote(String ticker, double open, double high, double low, double price, int volume,
       Date latestTradingDay, double previousClose, double change, String changePercent,
       Timestamp timestamp) {
@@ -81,7 +97,7 @@ public class Quote {
     this.previousClose = previousClose;
     this.change = change;
     this.changePercent = changePercent;
-    this.timestamp = timestamp;
+    this.timestamp = (timestamp != null) ? timestamp : new Timestamp(System.currentTimeMillis());
   }
 
   public String getTicker() {

@@ -49,6 +49,6 @@ public class Position {
   }
 
   public double getValuePaid() {
-    return 0;
+    return marketValue;       // return 0
   }
 }

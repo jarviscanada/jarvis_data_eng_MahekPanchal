@@ -23,7 +23,7 @@ class PositionDaoTest {
 
   private static final Logger logger = LoggerFactory.getLogger(PositionDaoTest.class);
 
-  //Autowired
+  @Autowired
   private PositionDao positionDao;
 
   private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/lilPostgres";
@@ -35,6 +35,9 @@ class PositionDaoTest {
   void setUp() throws SQLException {
     // Create an in-memory database connection for testing
     Connection connection = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
+    // Disable auto-commit mode
+    connection.setAutoCommit(false);
+
     positionDao = new PositionDao(connection);
 
     try {
@@ -50,8 +53,11 @@ class PositionDaoTest {
       // Commit the transaction
       connection.commit();
     } catch (SQLException e) {
+      // Rollback the transaction in case of an exception
+      connection.rollback();
       e.printStackTrace();
     }
+
   }
 
 

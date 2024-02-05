@@ -62,10 +62,10 @@ public class PositionService_UnitTest {
     // When
     positionService.buy(invalidTicker, 10, 150.0);
 
-    // Then: expect IllegalArgumentException
   }
 
-  @Test(expected = IllegalArgumentException.class)
+
+  @Test
   public void testBuy_NotEnoughVolume() {
     // Given
     String ticker = "AAPL";
@@ -78,10 +78,13 @@ public class PositionService_UnitTest {
     when(quoteService.isValidSymbol(ticker)).thenReturn(true);
     when(quoteService.getLatestQuote(ticker)).thenReturn(latestQuote);
 
-    // When
-    positionService.buy(ticker, numberOfShares, price);
-
-    // Then: expect IllegalArgumentException
+    // When and Then: expect IllegalArgumentException with the correct message
+    try {
+      positionService.buy(ticker, numberOfShares, price);
+      fail("Expected IllegalArgumentException was not thrown");
+    } catch (IllegalArgumentException e) {
+      assertEquals("Not enough volume to buy " + numberOfShares + " shares of " + ticker, e.getMessage());
+    }
   }
 
   @Test

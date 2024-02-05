@@ -17,7 +17,6 @@ public class Main {
   private static final Logger logger = LoggerFactory.getLogger(Main.class.getName());
 
   public static void main(String[] args) {
-    // Read properties from file
 
     Map<String, String> properties = new HashMap<>();
     try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/properties.txt"))) {
@@ -52,6 +51,7 @@ public class Main {
 
       // Instantiate services, injecting DAOs and API helper
       QuoteService sQuote = new QuoteService(qRepo, rcon);
+
       PositionService sPos = new PositionService(pRepo,sQuote);
 
       // Instantiate the main controller, injecting services
@@ -59,6 +59,10 @@ public class Main {
 
       // Start the application
       con.initClient();
+
+      SchedulerConfig sced = new SchedulerConfig(rcon,qRepo);
+      // Call the scheduler to fetch and persist data
+      sced.fetchDataAndPersist();
     } catch (SQLException e) {
       logger.error("Error establishing database connection", e);
     }

@@ -103,7 +103,7 @@ public class PositionDao implements CrudDao<Position, String> {
     String sql = "UPDATE position SET number_of_shares = ?, value_paid = ? WHERE symbol = ?";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setInt(1, entity.getNumOfShares());
-      statement.setDouble(2, entity.getMarketValue());
+      statement.setDouble(2, entity.getValuePaid());  //UPDATED THIS
       statement.setString(3, entity.getTicker());
       statement.executeUpdate();
     } catch (SQLException e) {
